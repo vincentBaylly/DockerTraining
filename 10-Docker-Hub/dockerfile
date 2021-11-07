@@ -1,0 +1,5 @@
+FROM ubuntu:16.04
+LABEL org.opencontainers.image.authors="your-name@provider.com"
+RUN apt-get update
+RUN apt-get install –y mysql
+CMD echo "My first image created."

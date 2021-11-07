@@ -1,0 +1,33 @@
+# on lancera la stack en arriere plan docker-compose up -d
+version: "2"
+
+networks:
+  default:
+    driver: bridge
+
+services:
+  web:
+    container_name: web
+    image: nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./Docker/web/www:/var/www/html
+      - ./Docker/web/sites:/etc/nginx/conf.d
+
+  PHP:
+    container_name: PHP
+    image: php-mysql:fpm
+    volumes:
+      - ./Docker/web/www:/var/www/html
+
+  mariadb:
+    container_name: mariadb
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    # ajout d'un alias pour mariadb
+    # networks:
+    #   default:
+    #     aliases:
+    #       - db

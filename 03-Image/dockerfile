@@ -1,0 +1,12 @@
+FROM scratch
+#FROM debian:jessie
+LABEL org.opencontainers.image.authors="your-name@provider.com"
+ADD script/SuperScript.sh /root
+#execute au moment de la creation de l'image "docker build"
+RUN chmod +x /root/SuperScript.sh
+#execute au demarrage du container
+CMD ["ls", "-la", "/root"]
+ADD CentOS-8.4.2105-x86_64-boot.iso /
+RUN useradd username
+RUN chmod +x /root/SuperScript.sh
+ENV MaVariable "Hello World"

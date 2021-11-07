@@ -1,0 +1,29 @@
+#version:
+#la version de notre infrasctructure. Nous pourrons donc le versionner
+#volumes:
+#definira les volumes de notre envirronement
+#network:
+#pour la declaration des configurations reseaux
+#services:
+#pour definir nos conteneur equivalent de docker run
+
+version: "1"
+
+volumes:
+  vol_nginx:
+
+networks:
+  net_nginx:
+
+services:
+  nginx:
+    image: nginx
+    container_name: nginx
+    volumes:
+      - vol_nginx:/var/www
+    environment:
+      - VARIABLE=truc
+    ports:
+      - "80:80"
+    networks:
+      - net_nginx

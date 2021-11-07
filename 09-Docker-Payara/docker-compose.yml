@@ -1,0 +1,15 @@
+version: "3.1"
+services:
+  db:
+    image: postgres:9.6.1
+    environment:
+      POSTGRES_PASSWORD: adminadmin
+      POSTGRES_DB: test
+  my-payara-project:
+    image: my-payara-project
+    ports:
+      - "8080:8080"
+      - "4848:4848"
+      - "8181:8181"
+    volumes:
+      - ./deployments:/opt/payara41/deployments
