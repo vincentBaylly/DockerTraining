@@ -1,5 +1,9 @@
 FROM ubuntu:16.04
 LABEL org.opencontainers.image.authors="your-name@provider.com"
 RUN apt-get update
-RUN apt-get install –y mysql
-CMD echo "My first image created."
+#RUN apt-get install mysql-server –y
+#CMD ["echo", "My first image created."]
+ENV MYSQL_PWD root
+RUN echo "mysql-server mysql-server/root_password password $MYSQL_PWD" | debconf-set-selections
+RUN echo "mysql-server mysql-server/root_password_again password $MYSQL_PWD" | debconf-set-selections
+RUN apt-get -y install mysql-server

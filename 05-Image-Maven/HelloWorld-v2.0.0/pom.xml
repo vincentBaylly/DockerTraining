@@ -24,7 +24,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.computhand.simpleproject.App</mainClass>
+							<mainClass>com.computhand.App</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

@@ -1,5 +1,5 @@
 FROM maven:3.5.4-jdk-8-alpine as maven
-COPY ./pom.xml ./pom.xml
-COPY ./src ./src
+COPY ./HelloWorld-v1.0.0/pom.xml ./pom.xml
+COPY ./HelloWorld-v1.0.0/src ./src
 RUN mvn dependency:go-offline -B
 RUN mvn package
