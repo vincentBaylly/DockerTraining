@@ -1,6 +1,6 @@
 package com.computhand.scheduler.repository;
 
-import com.computhand.scheduler.Task;
+import com.computhand.scheduler.model.Task;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
