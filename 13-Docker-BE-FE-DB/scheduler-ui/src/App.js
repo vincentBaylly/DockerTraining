@@ -210,5 +210,4 @@ class App extends React.Component {
   }
 }
 
-let domContainer = document.querySelector("#App");
-ReactDOM.render(<App />, domContainer);
+export default App;
