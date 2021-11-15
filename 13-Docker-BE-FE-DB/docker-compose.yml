@@ -1,0 +1,37 @@
+version: "3"
+services:
+  scheduler-postgres:
+    image: "postgres:9.6-alpine"
+    container_name: scheduler-postgres
+    volumes:
+      - scheduler-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=scheduler
+      - POSTGRES_USER=scheduler
+      - POSTGRES_PASSWORD=scheduler
+
+  scheduler-app:
+    build: ./scheduler-app
+    container_name: scheduler-app
+    environment:
+      - DB_SERVER=scheduler-postgres
+      - POSTGRES_DB=scheduler
+      - POSTGRES_USER=scheduler
+      - POSTGRES_PASSWORD=scheduler
+    ports:
+      - 8080:8080
+    links:
+      - scheduler-postgres
+
+  scheduler-ui:
+    build: ./scheduler-ui
+    container_name: scheduler-ui
+    ports:
+      - 3000:80
+    links:
+      - scheduler-app
+
+volumes:
+  scheduler-data:
